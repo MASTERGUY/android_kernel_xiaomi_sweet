@@ -580,7 +580,7 @@ static int sf_resume(void)
     char *screen[2] = { "SCREEN_STATUS=ON", NULL };
     kobject_uevent_env(&sf_ctl_dev.miscdev.this_device->kobj, KOBJ_CHANGE, screen);
 #if SF_INT_TRIG_HIGH
-    sf_ctl_set_irq_type(IRQF_TRIGGER_RISING | IRQF_NO_SUSPEND | IRQF_ONESHOT);
+    sf_ctl_set_irq_type(IRQF_TRIGGER_RISING | IRQF_NO_SUSPEND | IRQF_ONESHOT | IRQF_PERF_CRITICAL);
 #endif
     return 0;
 }
