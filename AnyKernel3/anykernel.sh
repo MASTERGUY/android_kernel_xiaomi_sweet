@@ -4,13 +4,13 @@
 ## AnyKernel setup
 # begin properties
 properties() { '
-kernel.string=Optimus Drunk Kernel by GtrCraft
+kernel.string=Perf+ Kernel By Murtaza Piplod  TG:@mtpiplod  XDA:Murtaza 1326
 do.devicecheck=1
 do.modules=0
 do.cleanup=1
 do.cleanuponabort=0
-device.name1=surya
-device.name2=karna
+device.name1=sweet
+device.name2=sweetin
 device.name3=
 device.name4=
 device.name5=
