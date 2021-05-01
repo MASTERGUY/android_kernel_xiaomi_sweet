@@ -744,6 +744,7 @@ static int dsi_panel_update_backlight(struct dsi_panel *panel,
 	pr_debug("bl_temp %d\n", bl_temp);
 	dsi = &panel->mipi_device;
 
+<<<<<<< HEAD
 	if (panel->bl_config.dcs_type_ss_ea || panel->bl_config.dcs_type_ss_eb)
 		rc = mipi_dsi_dcs_set_display_brightness_ss(dsi, bl_temp);
 	else
@@ -753,6 +754,12 @@ static int dsi_panel_update_backlight(struct dsi_panel *panel,
 	if (panel->bl_config.xiaomi_f4_41_flag)
 		rc = dsi_panel_update_backlight_demura_level(panel, bl_temp);
 
+=======
+	if (panel->bl_config.bl_inverted_dbv)
+		bl_lvl = (((bl_lvl & 0xff) << 8) | (bl_lvl >> 8));
+
+	rc = mipi_dsi_dcs_set_display_brightness(dsi, bl_lvl);
+>>>>>>> e7fc409aa1b222ee5235d352a5d8f25814c74217
 	if (rc < 0)
 		pr_err("failed to update dcs backlight:%d\n", bl_temp);
 
@@ -2805,6 +2812,9 @@ static int dsi_panel_parse_bl_config(struct dsi_panel *panel)
 
 	panel->bl_config.samsung_prepare_hbm_flag = utils->read_bool(utils->data,
 									"qcom,samsung-prepare-hbm");
+
+	panel->bl_config.bl_inverted_dbv = utils->read_bool(utils->data,
+		"qcom,mdss-dsi-bl-inverted-dbv");
 
 	if (panel->bl_config.type == DSI_BACKLIGHT_PWM) {
 		rc = dsi_panel_parse_bl_pwm_config(panel);
