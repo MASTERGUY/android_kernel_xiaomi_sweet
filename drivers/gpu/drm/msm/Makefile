@@ -56,6 +56,7 @@ msm_drm-y := \
 	sde_hdcp_2x.o \
 	sde_dbg.o \
 	xiaomi_frame_stat.o \
+	sde_dbg_evtlog.o \
 
 msm_drm-$(CONFIG_DEBUG_FS) += sde_dbg.o \
 	sde_dbg_evtlog.o \
